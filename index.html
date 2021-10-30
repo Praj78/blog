@@ -1,0 +1,245 @@
+<link href="styles.css" rel="stylesheet"/>
+<nav id="navbar">
+    <header>Intro to Ethereum & Remix</header>
+    <ul>
+      <li><a class="nav-link" href="#Ethereum">Ethereum</a></li>
+      <li>
+        <a class="nav-link" href="#What_is_ether?"
+          >What is ether?</a
+        >
+      </li>
+      <li>
+        <a class="nav-link" href="#Smart_Contracts">Smart Contracts</a>
+      </li>
+      <li><a class="nav-link" href="#Blockchain">Blockchain</a></li>
+      <li><a class="nav-link" href="#EVM">EVM</a></li>
+      <li>
+        <a class="nav-link" href="#Nodes">Nodes</a>
+      </li>
+      <li><a class="nav-link" href="#Accounts">Accounts</a></li>
+      <li><a class="nav-link" href="#Transactions">Transactions</a></li>
+      <li><a class="nav-link" href="#Solidity">Solidity</a></li>
+      <li><a class="nav-link" href="#Remix">Remix</a></li>
+      <li>
+        <a class="nav-link" href="#Pragma">Pragma</a>
+      </li>
+      <li><a class="nav-link" href="#Variables">Variables</a></li>
+      <li>
+        <a class="nav-link" href="#Constructors"
+          >Constructors</a
+        >
+      </li>
+      <li><a class="nav-link" href="#Reference">Reference</a></li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Ethereum">
+      <header>Ethereum</header>
+      <article>
+        <p>
+          In the Ethereum universe, there is a single, canonical computer (called the Ethereum Virtual Machine, or EVM) whose state everyone on the Ethereum network agrees on. Everyone who participates in the Ethereum network (every Ethereum node) keeps a copy of the state of this computer. Additionally, any participant can broadcast a request for this computer to perform arbitrary computation. Whenever such a request is broadcast, other participants on the network verify, validate, and carry out (“execute”) the computation. This causes a state change in the EVM, which is committed and propagated throughout the entire network.
+        </p>
+  
+        <p>
+         Requests for computation are called transaction requests; the record of all transactions as well as the EVM’s present state is stored in the blockchain, which in turn is stored and agreed upon by all nodes.
+        </p>
+        <p>
+          Cryptographic mechanisms ensure that once transactions are verified as valid and added to the blockchain, they can’t be tampered with later; the same mechanisms also ensure that all transactions are signed and executed with appropriate “permissions” (no one should be able to send digital assets from Alice’s account, except for Alice herself).
+        </p>
+       
+      </article>
+    </section>
+    <section class="main-section" id="What_is_ether?">
+      <header>What is ether?</header>
+      <article>
+        <p>The purpose of Ether, the cryptocurrency, is to allow for the existence of a market for computation. Such a market provides an economic incentive for participants to verify/execute transaction requests and to provide computational resources to the network.</p>
+        
+        <p>Any participant who broadcasts a transaction request must also offer some amount of ether to the network, as a bounty to be awarded to whoever eventually does the work of verifying the transaction, executing it, committing it to the blockchain, and broadcasting it to the network.</p>
+        
+        <p>The amount of ether paid is a function of the length of the computation. This also prevents malicious participants from intentionally clogging the network by requesting the execution of infinite loops or resource-intensive scripts, as these actors will be continually charged.</p>
+       
+      </article>
+    </section>
+    <section class="main-section" id="Smart_Contracts">
+      <header>Smart Contracts</header>
+      <article>
+        <p>
+         In practice, participants don’t write new code every time they want to request a computation on the EVM. Rather, application developers upload programs (reusable snippets of code) into EVM storage, and then users make requests for the execution of these code snippets with varying parameters. We call the programs uploaded to and executed by the network smart contracts.
+        </p>
+  
+        <p>
+          At a very basic level, you can think of a smart contract like a sort of vending machine: a script that, when called with certain parameters, performs some actions or computation if certain conditions are satisfied. For example, a simple vendor smart contract could create and assign ownership of a digital asset if the caller sends ether to a specific recipient.
+        </p>
+        <p>
+         Any developer can create a smart contract and make it public to the network, using the blockchain as its data layer, for a fee paid to the network. Any user can then call the smart contract to execute its code, again for a fee paid to the network.
+        </p>
+        
+        <p>
+          Thus, with smart contracts, developers can build and deploy arbitrarily complex user-facing apps and services: marketplaces, financial instruments, games, etc.
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="Blockchain">
+      <header>Blockchain</header>
+      <article>
+        <p>
+       The sequence of all blocks that have been committed to the Ethereum network in the history of the network. So-named because each block contains a reference to the previous block, which helps us maintain an ordering over all blocks (and thus over the precise history).
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="EVM">
+      <header>EVM</header>
+      <article>
+        <p>
+        The Ethereum Virtual Machine is the global virtual computer whose state every participant on the Ethereum network stores and agrees on. Any participant can request the execution of arbitrary code on the EVM; code execution changes the state of the EVM.
+        </p>
+      </article>
+      
+    </section>
+    <section class="main-section" id="Nodes">
+      <header>Nodes</header>
+      <article>
+        <p>
+       The real-life machines which are storing the EVM state. Nodes communicate with each other to propagate information about the EVM state and new state changes. Any user can also request the execution of code by broadcasting a code execution request from a node. The Ethereum network itself is the aggregate of all Ethereum nodes and their communications.
+        
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="Accounts">
+      <header>Accounts</header>
+      <article>
+        <p>
+       Where ether is stored. Users can initialize accounts, deposit ether into the accounts, and transfer ether from their accounts to other users. Accounts and account balances are stored in a big table in the EVM; they are a part of the overall EVM state.
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="Transactions">
+      <header>Transactions</header>
+      <article>
+        <p>
+          A “transaction request” is the formal term for a request for code execution on the EVM, and a “transaction” is a fulfilled transaction request and the associated change in the EVM state. Any user can broadcast a transaction request to the network from a node. For the transaction request to affect the agreed-upon EVM state, it must be validated, executed, and “committed to the network” by some other node. Execution of any code causes a state change in the EVM; upon commitment, this state change is broadcast to all nodes in the network. Some examples of transactions:
+        </p>
+        <ul>
+          <li>Send X ether from my account to Alice’s account.</li>
+          <li>Publish some smart contract code into EVM memory.</li>
+          <li>Execute the code of the smart contract at address X in the EVM, with arguments Y.</li>
+        </ul>
+        
+      </article>
+    </section>
+    <section class="main-section" id="Solidity">
+      <header>Solidiity</header>
+      <article>
+        <p>
+          Solidity is an object-oriented, high-level language for implementing smart contracts. Smart contracts are programs which govern the behaviour of accounts within the Ethereum state.
+        </p>
+        
+        <p>
+          Solidity is a curly-bracket language. It is influenced by C++, Python and JavaScript, and is designed to target the Ethereum Virtual Machine (EVM). You can find more details about which languages Solidity has been inspired by in the language influences section.
+        
+  
+        
+        
+          Solidity is statically typed, supports inheritance, libraries and complex user-defined types among other features.
+       
+  
+        
+         With Solidity you can create contracts for uses such as voting, crowdfunding, blind auctions, and multi-signature wallets.
+        </p>
+  
+        
+  
+      </article>
+    </section>
+    <section class="main-section" id="Remix">
+      <header>Remix</header>
+      <article>
+        <p>Remix IDE is an open source web and desktop application. It fosters a fast development cycle and has a rich set of plugins with intuitive GUIs. Remix is used for the entire journey of contract development as well as being a playground for learning and teaching Ethereum.</p>
+        
+       <p> Remix IDE is part of the Remix Project which is a platform for development tools that use a plugin architecture. It encompasses sub-projects including Remix Plugin Engine, Remix Libs, and of course Remix-IDE.
+        
+        Remix IDE is a powerful open source tool that helps you write Solidity contracts straight from the browser.
+        It is written in JavaScript and supports both usage in the browser, in the browser but run locally and in a desktop version.
+        Remix IDE has modules for testing, debugging and deploying of smart contracts and much more.
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="Pragma">
+      <header>Pragma</header>
+      <article>
+        <p>
+        The first line of a contract tells the compiler which version to use. This prevents you from adding functionality that a compiler does not support.
+        
+        Here is a pragma that sets solidity to a specific version. pragma solidity =0.5.2;
+        The syntax starts with pragma solidity, and uses standard mathematical symbols to define the range of versions in minimum and maximum pairs.
+          <p>
+        Example:
+        <ul>
+        <li>Add a pragma statement above contract SimpleStorage that specifies a compiler version greater than or equal to 0.4.0, and less than 0.7.0.
+        </li>
+          <ul>
+        <code>pragma solidity >=0.4.0 <0.7.0 </code>
+       
+      </article>
+    </section>
+    <section class="main-section" id="Variables">
+      <header>Variables</header>
+      <article>
+        <p>A Solidity contract is a collection of functions and state stored at a specific address on an Ethereum network.</p>
+        <p>Solidity is a statically typed language, which means that you need to specify the type of each variable (state and local). Solidity provides elementary types which you can combine to form complex types.</p>
+        <p>An integer is a common variable type to define a number. With Solidity, you need to specify if it is signed (if it could be a negative number) using int, or unsigned (it will only be a positive number) using uint.</p>
+        <p>You also need to specify the bit size using steps of 8. (e.g. int8 or int32 or uint256). If you don't specify a size, the variable defaults to 256 bits.</p>
+        
+        Example:
+        Create a variable that is:
+        <ul>
+        <li>a 256 bit sized unsigned integer</li>
+          <li>call it storedData</li>
+          <li>set it equal to 3</li>
+          <ul>
+            
+        <code> uint256 storedData = 3</code>
+        
+  
+       
+      </article>
+    </section>
+    <section class="main-section" id="Constructors">
+      <header>Constructors</header>
+      <article>
+       The constructor is a special function run during the creation of the contract and you cannot call it afterwards.
+  
+        <ul>
+          <li>The syntax is:</li>
+          
+        </ul>
+        <code>constructor() functionModifiers {}
+        </code>
+        <p>
+          A constructor can only use the public or internal function modifiers.
+          Solidity has a number of global variables, but for this step we are interested in msg.sender that contains the external address source of the current function call.
+        </p>
+          <p>Create a public constructor function that sets the minter state variable to the value of msg.sender.</p>
+        <code>  constructor() public {
+          minter = msg.sender;
+      }</code>
+        
+      </article>
+    </section>
+    <section class="main-section" id="Reference">
+      <header>Reference</header>
+      <article>
+        <ul>
+          <li>
+            All the documentation in this page is taken from
+            <a
+              href="https://ethereum.org/en/"
+              target="_blank"
+              >MDN</a
+            >
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+  
